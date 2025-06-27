@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>To-Do List</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        h1 { text-align: center; }
+        .task { padding: 10px; border-bottom: 1px solid #ddd; }
+        .complete { text-decoration: line-through; color: gray; }
+    </style>
+</head>
+<body>
+    <h1>My To-Do List</h1>
+    {% for task in tasks %}
+        <div class="task">
+            <h3 class="{% if task.complete %}complete{% endif %}">{{ task.title }}</h3>
+            <p>{{ task.description }}</p>
+            <small>Created: {{ task.created }}</small>
+        </div>
+    {% empty %}
+        <p>No tasks found. Add some from the admin!</p>
+    {% endfor %}
+</body>
+</html>
