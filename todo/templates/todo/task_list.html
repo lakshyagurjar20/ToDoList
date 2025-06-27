@@ -15,14 +15,16 @@
       <a href="{% url 'add_task' %}"><button>Add New Task</button></a>
   </p>
   
-    {% for task in tasks %}
-        <div class="task">
-            <h3 class="{% if task.complete %}complete{% endif %}">{{ task.title }}</h3>
-            <p>{{ task.description }}</p>
-            <small>Created: {{ task.created }}</small>
-        </div>
-    {% empty %}
-        <p>No tasks found. Add some from the admin!</p>
-    {% endfor %}
+  {% for task in tasks %}
+  <div class="task">
+      <h3 class="{% if task.complete %}complete{% endif %}">{{ task.title }}</h3>
+      <p>{{ task.description }}</p>
+      <small>Created: {{ task.created }}</small><br>
+      <a href="{% url 'update_task' task.id %}"><button>Edit</button></a>
+  </div>
+{% empty %}
+  <p>No tasks found. Add some from the admin!</p>
+{% endfor %}
+
 </body>
 </html>

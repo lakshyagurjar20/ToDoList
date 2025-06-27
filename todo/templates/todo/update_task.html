@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Task</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        h1 { text-align: center; }
+        form { max-width: 400px; margin: auto; }
+        label { display: block; margin: 10px 0 5px; }
+        input, textarea, select { width: 100%; padding: 8px; }
+        button { margin-top: 15px; padding: 10px 15px; }
+    </style>
+</head>
+<body>
+    <h1>Edit Task</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Update Task</button>
+    </form>
+</body>
+</html>
