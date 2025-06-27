@@ -31,3 +31,9 @@ def update_task(request, pk):
         form = TaskForm(instance=task)
     return render(request, 'todo/update_task.html', {'form': form})
 
+def delete_task(request, pk):
+    task = get_object_or_404(Task, pk=pk)
+    if request.method == 'POST':
+        task.delete()
+        return redirect('task_list')
+    return render(request, 'todo/delete_task.html', {'task': task})

@@ -21,10 +21,12 @@
       <p>{{ task.description }}</p>
       <small>Created: {{ task.created }}</small><br>
       <a href="{% url 'update_task' task.id %}"><button>Edit</button></a>
+      <a href="{% url 'delete_task' task.id %}"><button>Delete</button></a>
   </div>
 {% empty %}
   <p>No tasks found. Add some from the admin!</p>
 {% endfor %}
+
 
 </body>
 </html>
