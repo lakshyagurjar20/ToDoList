@@ -14,7 +14,13 @@
   <p style="text-align: center;">
       <a href="{% url 'add_task' %}"><button>Add New Task</button></a>
   </p>
-  
+  <p style="text-align: center;">
+    <form method="get" style="display: inline;">
+        <input type="text" name="q" placeholder="Search tasks..." value="{{ query|default:'' }}">
+        <button type="submit">Search</button>
+    </form>
+</p>
+
   {% for task in tasks %}
   <div class="task">
       <h3 class="{% if task.complete %}complete{% endif %}">{{ task.title }}</h3>

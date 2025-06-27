@@ -2,8 +2,12 @@ from django.shortcuts import render
 from .models import Task
 
 def task_list(request):
+    query = request.GET.get('q')  # get 'q' param from URL
     tasks = Task.objects.all().order_by('-created')
-    return render(request, 'todo/task_list.html', {'tasks': tasks})
+    if query:
+        tasks = tasks.filter(title__icontains=query)
+    return render(request, 'todo/task_list.html', {'tasks': tasks, 'query': query})
+
 
 from django.shortcuts import redirect
 from .forms import TaskForm
